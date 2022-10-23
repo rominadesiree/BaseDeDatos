@@ -1,0 +1,463 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 02, 2020 at 12:57 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `merrylin_cryptid`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `animal`
+--
+
+CREATE TABLE `animal` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `ID_PELIGROSIDAD` int(11) DEFAULT NULL,
+  `ID_STATUS` int(11) DEFAULT NULL,
+  `ID_HABITAT` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `animal`
+--
+
+INSERT INTO `animal` (`ID`, `NOMBRE`, `ID_PELIGROSIDAD`, `ID_STATUS`, `ID_HABITAT`) VALUES
+(1, 'ACROMANTULA', 5, 3, 1),
+(2, 'AUGUREY', 2, 4, 2),
+(3, 'BASILISCO', 5, 1, 3),
+(4, 'ASHWINDER', 3, 1, 4),
+(5, 'BILLWING', 3, 5, 13),
+(6, 'BOWTRUCKLE', 2, 1, 5),
+(7, 'BUNDIMUN', 3, 6, 6),
+(8, 'CABALLO ALADO', 2, 1, 7),
+(9, 'CANGREJO DE FUEGO', 3, 7, 8),
+(10, 'CENTAURO', 4, 3, 5),
+(11, 'CHIZPURFLE', 2, 6, 6),
+(12, 'CLABBERT', 2, 1, 9),
+(13, 'CRUP', 3, 1, 6),
+(14, 'DEMIGUISE', 4, 1, 10),
+(15, 'DIRICAWL', 2, 4, 11),
+(16, 'DOXY', 3, 1, 20),
+(17, 'DRAGON', 5, 3, 12),
+(18, 'DUENDECILLOS', 3, 3, 13),
+(19, 'DUGBOG', 3, 1, 14),
+(20, 'ERKLING', 4, 1, 10),
+(21, 'ERUMPENT', 4, 1, 15),
+(22, 'ESCARBATOS', 3, 1, 16),
+(23, 'ESFINGE', 4, 3, 17),
+(24, 'FENIX', 4, 4, 18),
+(25, 'FWOPPER', 3, 4, 10),
+(26, 'GENTE DE AGUA', 4, 3, 8),
+(27, 'GHOUL', 2, 2, 19),
+(28, 'GLUMBUMBLE', 3, 5, 10),
+(29, 'GNOMO', 2, 1, 9),
+(30, 'GORROS ROJOS', 3, 2, 20),
+(31, 'GRAPHORN', 4, 1, 11),
+(32, 'GRIFO', 4, 1, 7),
+(33, 'GRINDYLOW', 2, 1, 21),
+(34, 'GUSAMOCO', 1, 1, 22),
+(35, 'HADA', 2, 1, 23),
+(36, 'HIPOCAMPO', 3, 1, 8),
+(37, 'HIPOGRIFO', 3, 1, 7),
+(38, 'HOMBRE LOBO', 5, 3, 6),
+(39, 'HORKLUMP', 1, 6, 9),
+(40, 'IMP', 2, 1, 24),
+(41, 'LA LLORONA', NULL, 2, 6),
+(42, 'PIE GRANDE', NULL, NULL, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `animal_ubicacion`
+--
+
+CREATE TABLE `animal_ubicacion` (
+  `ID` int(11) NOT NULL,
+  `ID_ANIMAL` int(11) NOT NULL,
+  `ID_UBICACION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `animal_ubicacion`
+--
+
+INSERT INTO `animal_ubicacion` (`ID`, `ID_ANIMAL`, `ID_UBICACION`) VALUES
+(1, 2, 1),
+(2, 2, 2),
+(3, 1, 3),
+(4, 3, 5),
+(5, 5, 4),
+(6, 6, 12),
+(7, 6, 13),
+(8, 6, 14),
+(9, 7, 7),
+(10, 8, 6),
+(11, 8, 7),
+(12, 9, 15),
+(13, 10, 16),
+(14, 10, 17),
+(15, 11, 6),
+(16, 11, 7),
+(17, 12, 8),
+(18, 12, 9),
+(19, 13, 10),
+(20, 13, 11),
+(21, 14, 19),
+(22, 15, 20),
+(23, 16, 21),
+(24, 16, 22),
+(25, 17, 18),
+(26, 18, 23),
+(27, 19, 24),
+(28, 19, 54),
+(29, 19, 25),
+(30, 20, 26),
+(31, 21, 27),
+(32, 22, 28),
+(33, 23, 29),
+(34, 23, 30),
+(35, 24, 29),
+(36, 24, 30),
+(37, 24, 31),
+(38, 24, 32),
+(39, 25, 33),
+(40, 26, 34),
+(41, 27, 7),
+(42, 28, 35),
+(43, 28, 36),
+(44, 28, 37),
+(45, 28, 38),
+(46, 29, 38),
+(47, 29, 39),
+(48, 29, 40),
+(49, 30, 41),
+(50, 31, 42),
+(51, 31, 43),
+(52, 31, 44),
+(53, 32, 45),
+(54, 33, 46),
+(55, 33, 47),
+(56, 34, 48),
+(57, 35, 49),
+(58, 36, 50),
+(59, 37, 6),
+(60, 37, 7),
+(61, 38, 7),
+(62, 39, 35),
+(63, 39, 36),
+(64, 39, 51),
+(65, 40, 52),
+(66, 40, 53);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `estatus`
+--
+
+CREATE TABLE `estatus` (
+  `ID` int(11) NOT NULL,
+  `TIPO` varchar(20) NOT NULL,
+  `DESCRIPCION` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `estatus`
+--
+
+INSERT INTO `estatus` (`ID`, `TIPO`, `DESCRIPCION`) VALUES
+(1, 'BESTIA', 'UNA BESTIA ES UNA CRIATURA SALVAJE QUE NO TIENE LA INTELIGENCIA SUFICIENTE PARA ENTENDER A LOS SERES HUMANOS'),
+(2, 'ESPIRITU', 'CUALQUIER CRIATURA QUE SEA CONSIDERADA UN FENOMENO PARANORMAL DE TIPO FANTASMA'),
+(3, 'SER', 'CUALQUIER CRIATURA QUE TENGA INTELIGENCIA SUFICIENTE PARA ENTENDER AL SER HUMANO'),
+(4, 'AVE', ' ANIMAL VERTEBRADOS, DE SANGRE CALIENTE, QUE CAMINA, SALTA O SE MANTIENEN SOLO SOBRE LAS EXTREMIDADES POSTERIORES, MIENTRAS QUE LAS EXTREMIDADES ANTERIORES HAN EVOLUCIONADO HASTA CONVERTIRSE EN ALAS Q'),
+(5, 'INSECTO', 'LOS INSECTOS SON UN TIPO DE ANIMAL PERTENECIENTE AL REINO DE LOS ARTRÓPODOS, CARACTERIZADOS POR TENER EL CUERPO PROTEGIDO POR UN ESQUELETO EXTERNO.'),
+(6, 'PARASITO', 'SE LE LLAMA PARÁSITO A AQUEL SER VIVO QUE VIVE Y SE NUTRE DE OTRO SIN APORTARLE NINGÚN TIPO DE BENEFICIO A ESTE ÚLTIMO'),
+(7, 'CRUSTACEO', 'ES UN TÉRMINO QUE DERIVA DEL LATÍN “CRUSTA” CUYA TRADUCCIÓN ES COSTRA O CORTEZA Y SE UTILIZA EN EL ÁMBITO DE LA ZOOLOGÍA PARA DESCRIBIR A LA ESPECIE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `habitat`
+--
+
+CREATE TABLE `habitat` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `DESCRIPCION` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `habitat`
+--
+
+INSERT INTO `habitat` (`ID`, `NOMBRE`, `DESCRIPCION`) VALUES
+(1, 'JUNGLA IMPENETRABLE', 'ESPESA Y POCO EXPLORADA POR EL HOMBRE'),
+(2, 'ZARZAS Y ESPINOS', 'SECOS Y DIFICILES DE ALCANZAR SIN GRAN ESFUERZO'),
+(3, 'GRANJAS', 'ABANDONADAS Y OSCURAS'),
+(4, 'CHIMENEAS', 'PREFERENTEMENTE DE PIEDRA POR SU CONSERVACION DEL CALOR'),
+(5, 'BOSQUES', 'PROFUNDOS Y LLENOS DE RECURSOS'),
+(6, 'HOGARES', 'CONTIENEN TODO EL ALIMENTO Y CONFORT QUE LES TRAJO LA HUMANIDAD'),
+(7, 'ESTABLOS', 'LA MASCOTA RECIBE LOS CUIDADOS Y ATENCIONES DE SU PROPIETARIO'),
+(8, 'ACUATICO', 'INCLUYE TODOS LOS BIOMAS'),
+(9, 'JARDINES', 'TIENE TODAS LAS VENTAJAS DE SER UN HABITAT PROTEGIDO POR SU PROPIETARIO'),
+(10, 'ARBOLES', 'PROVEEDOR DE SEGURIDAD, COMIDA Y SOMBRA'),
+(11, 'MONTANA', 'ROCOSA Y DE GRAN ALTURA'),
+(12, 'CUEVA', 'OSCURA, SECA Y PROTEGIDA DEL FRIO EXTERIOR'),
+(13, 'PARQUES Y PLAZAS', 'LLENO DE ESCONDITES Y OPORTUNIDADES PARA ALIMENTARSE'),
+(14, 'PANTANO', 'HUMEDO Y LLENO DE MOSQUITOS'),
+(15, 'SAVANNA', 'CALUROSO Y SECO'),
+(16, 'MINAS', 'LLENAS DE METALES PRECIOSOS QUE ESPERAN SER ENCONTRADOS'),
+(17, 'TUMBAS', 'A LOS PIES DE LAS VIEJAS GLORIAS'),
+(18, 'GRANDES MONUMENTOS', 'OPULENCIA Y PODER EN FORMA FISICA'),
+(19, 'ATICO,SOTANO,MAZMORRA', 'ENTRE LA DESOLACION Y EL POLVO DEL OLVIDO'),
+(20, 'HOYOS', 'NO IMPORTA SI FUERON CAVADOS EN DESESPERACION O COMO HOGAR, SIEMPRE SE APROVECHAN'),
+(21, 'LAGOS', 'EN AGUA QUIETA NO HAY QUE CONFIAR...TIENE MAS VIDA DE LA QUE PARECE'),
+(22, 'ZANJAS HUMEDAS', 'LA VIDA SIEMPRE ENCUENTRA CAMINO SI EXISTE ALGO DE AGUA EN EL AREA'),
+(23, 'CLAROS UMBROSOS', 'UNOS PEQUENOS ESPACIOS DE LUZ EN EL MEDIO DEL PROFUNDO BOSQUE'),
+(24, 'RIO', 'SIEMPRE FRESCO Y CRISTALINO');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pais`
+--
+
+CREATE TABLE `pais` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE` varchar(30) NOT NULL,
+  `CONTINENTE` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pais`
+--
+
+INSERT INTO `pais` (`ID`, `NOMBRE`, `CONTINENTE`) VALUES
+(1, 'GRAN BRETAÑA', 'EUROPA'),
+(2, 'IRLANDA', 'EUROPA'),
+(3, 'MALASIA', 'ASIA'),
+(4, 'AUSTRALIA', 'OCEANIA'),
+(5, 'INGLATERRA', 'EUROPA'),
+(6, 'ALEMANIA', 'EUROPA'),
+(7, 'FIYI', 'OCEANIA'),
+(8, 'GRECIA', 'EUROPA'),
+(9, 'EEUU', 'AMERICA'),
+(10, 'CHINA', 'ASIA'),
+(11, 'ISLA MAURICIO', 'AFRICA'),
+(12, 'ARGENTINA', 'AMERICA'),
+(13, 'REINO UNIDO', 'EUROPA'),
+(14, 'EGIPTO', 'AFRICA'),
+(15, 'INDIA', 'ASIA'),
+(16, 'AFRICA', 'AFRICA'),
+(17, 'DINAMARCA', 'EUROPA'),
+(18, 'FINLANDIA', 'EUROPA'),
+(19, 'ISLANDIA', 'EUROPA'),
+(20, 'LETONIA', 'EUROPA'),
+(21, 'FRANCIA', 'EUROPA'),
+(22, 'ESCANDINAVIA', 'OCEANIA'),
+(23, 'MUNDO', 'MUNDO');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peligrosidad`
+--
+
+CREATE TABLE `peligrosidad` (
+  `ID` int(11) NOT NULL,
+  `CLASIFICACION` varchar(10) NOT NULL,
+  `DESCRIPCION` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `peligrosidad`
+--
+
+INSERT INTO `peligrosidad` (`ID`, `CLASIFICACION`, `DESCRIPCION`) VALUES
+(1, 'X', 'ABURRIDAS'),
+(2, 'XX', 'INOFENSIVAS/PODIAN SER DOMESTICADAS'),
+(3, 'XXX', 'SOLO PERSONAS COMPETENTES PODIAN ACERCARSE'),
+(4, 'XXXX', 'PELIGROSAS, REQUERIAN CONOCIMIENTO ESPECIAL AL RESPECTO'),
+(5, 'XXXXX', 'CON REPUTACION DE ASESINAR/IMPOSIBLE DE ENTRENAR');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ubicacion`
+--
+
+CREATE TABLE `ubicacion` (
+  `ID` int(11) NOT NULL,
+  `ID_PAIS` int(11) NOT NULL,
+  `NOMBRE` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ubicacion`
+--
+
+INSERT INTO `ubicacion` (`ID`, `ID_PAIS`, `NOMBRE`) VALUES
+(1, 1, 'DUNGENESS'),
+(2, 2, 'DESIERTO DE BURREN'),
+(3, 3, 'ISLA DE BORNEO'),
+(4, 4, 'SYDNEY'),
+(5, 1, 'STONEHENGE'),
+(6, 23, 'RURAL'),
+(7, 23, 'URBANO'),
+(8, 9, 'TEXAS'),
+(9, 9, 'CHICAGO'),
+(10, 5, 'GOLDEN HILL'),
+(11, 5, 'YORK'),
+(12, 5, 'BOSQUE DE BRICK'),
+(13, 5, 'BOSQUE DE ROSSLYN'),
+(14, 6, 'BOSQUE BAVARO'),
+(15, 7, 'ISLA DE FIYI'),
+(16, 8, 'BOSQUE DE FOLOI'),
+(17, 8, 'BOSQUE DE CRETA'),
+(18, 23, 'REGION MONTAÑOSA'),
+(19, 10, 'SELVA YANODA'),
+(20, 11, 'PARQUE NACIONAL GARGANTA DE RIO NEGRO'),
+(21, 9, 'POLO NORTE'),
+(22, 12, 'ANTARTIDA'),
+(23, 5, 'CORNWALL'),
+(24, 9, 'FLORIDA'),
+(25, 2, 'CULNA MONA'),
+(26, 6, 'SELVA NEGRA'),
+(27, 16, 'ZAMBIA'),
+(28, 13, 'LONDRES'),
+(29, 14, 'VALLE DE LOS REYES'),
+(30, 14, 'VALLE DE KARNAK'),
+(31, 15, 'TAJ MAHAL'),
+(32, 10, 'PEKIN'),
+(33, 16, 'REPUBLICA DEMOCRATICA DEL CONGO'),
+(34, 23, 'OCEANOS'),
+(35, 17, 'NORTE DE DINAMARCA'),
+(36, 18, 'NORTE DE FINLANDIA'),
+(37, 20, 'NORTE DE LETONIA'),
+(38, 19, 'NORTE ISLANDIA'),
+(39, 9, 'NORTE AMERICA'),
+(40, 21, 'NORTE DE FRANCIA'),
+(41, 23, 'ANTIGUOS CAMPOS DE BATALLA'),
+(42, 21, 'REGION MONTAÑOSA'),
+(43, 6, 'REGION MONTAÑOSA'),
+(44, 5, 'REGION MONTAÑOSA'),
+(45, 8, 'ATENAS'),
+(46, 13, 'LOUGHMEAGH'),
+(47, 2, 'WINDEERMERE'),
+(48, 23, 'HUMEDALES'),
+(49, 23, 'BOSQUES'),
+(50, 8, 'MAR MEDITERRANEO'),
+(51, 22, 'NORTE DE ESCANDINAVIA'),
+(52, 13, 'NORTE DE REINO UNIDO'),
+(53, 2, 'NORTE DE IRLANDA'),
+(54, 12, 'MISIONES');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `animal`
+--
+ALTER TABLE `animal`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_PELIGROSIDAD` (`ID_PELIGROSIDAD`),
+  ADD KEY `ID_STATUS` (`ID_STATUS`),
+  ADD KEY `ID_HABITAT` (`ID_HABITAT`);
+
+--
+-- Indexes for table `animal_ubicacion`
+--
+ALTER TABLE `animal_ubicacion`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_ANIMAL` (`ID_ANIMAL`),
+  ADD KEY `ID_UBICACION` (`ID_UBICACION`);
+
+--
+-- Indexes for table `estatus`
+--
+ALTER TABLE `estatus`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `habitat`
+--
+ALTER TABLE `habitat`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `pais`
+--
+ALTER TABLE `pais`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `peligrosidad`
+--
+ALTER TABLE `peligrosidad`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `ubicacion`
+--
+ALTER TABLE `ubicacion`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_PAIS` (`ID_PAIS`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `animal_ubicacion`
+--
+ALTER TABLE `animal_ubicacion`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `animal`
+--
+ALTER TABLE `animal`
+  ADD CONSTRAINT `animal_ibfk_1` FOREIGN KEY (`ID_PELIGROSIDAD`) REFERENCES `peligrosidad` (`ID`),
+  ADD CONSTRAINT `animal_ibfk_2` FOREIGN KEY (`ID_STATUS`) REFERENCES `estatus` (`ID`),
+  ADD CONSTRAINT `animal_ibfk_3` FOREIGN KEY (`ID_HABITAT`) REFERENCES `habitat` (`ID`);
+
+--
+-- Constraints for table `animal_ubicacion`
+--
+ALTER TABLE `animal_ubicacion`
+  ADD CONSTRAINT `animal_ubicacion_ibfk_1` FOREIGN KEY (`ID_ANIMAL`) REFERENCES `animal` (`ID`),
+  ADD CONSTRAINT `animal_ubicacion_ibfk_2` FOREIGN KEY (`ID_UBICACION`) REFERENCES `ubicacion` (`ID`);
+
+--
+-- Constraints for table `ubicacion`
+--
+ALTER TABLE `ubicacion`
+  ADD CONSTRAINT `ubicacion_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
